@@ -3,6 +3,7 @@ import Button from '../Button'
 import InputForm from '../InputForm'
 import { FormContainer, MoreOptions } from './styles'
 import useAuth from '../../context/AuthProvider/useAuth'
+import { Link } from 'react-router-dom'
 
 function LoginForm() {
   const [emailValue, setEmailValue] = useState('')
@@ -30,7 +31,7 @@ function LoginForm() {
               <input type="checkbox" name="remember" id="remember" />
               <label htmlFor="remember">Remember me</label>
             </div>
-            <a href="#">Forgot password?</a>
+            <Link to='/register'>Create account?</Link>
         </MoreOptions>
         <Button name='Login'/>
     </FormContainer>

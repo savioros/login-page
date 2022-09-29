@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { IAuthProvider, IContext, IUser } from './types'
-import { getUserLocalStorage, LoginRequest, setUserLocalStorage } from './util'
+import { getUserLocalStorage, request, setUserLocalStorage } from './util'
 
 export const AuthContext = createContext<IContext>({} as IContext)
 
@@ -17,7 +17,7 @@ export function AuthProvider({ children }: IAuthProvider) {
     }, [])
 
     async function authenticate(email: string, password: string) {
-        const response = await LoginRequest(email, password)
+        const response = await request('login', email, password)
         
         const payload = {email, token: response?.token}
         
@@ -33,13 +33,24 @@ export function AuthProvider({ children }: IAuthProvider) {
         }
     }
 
+    async function register(email: string, password: string) {
+        const response = await request('register', email, password)
+        
+        const payload = {email, token: response?.token}
+        
+        if(email && response?.token) {
+            setUser(payload)
+            navigate('/')
+        }
+    }
+
     function loggout(){
         setUser(null)
         setUserLocalStorage(null)
     }
 
     return (
-        <AuthContext.Provider value={{...user, errorLogin, authenticate, loggout}}>
+        <AuthContext.Provider value={{...user, errorLogin, authenticate, register, loggout}}>
             {children}
         </AuthContext.Provider>   
     )
