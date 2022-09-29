@@ -8,5 +8,6 @@ export const FormContainer = styled.form`
 
     p{
         color: red;
+        height: 20px;
     }
 `

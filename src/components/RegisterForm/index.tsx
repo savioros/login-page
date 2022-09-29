@@ -31,7 +31,7 @@ function RegisterForm() {
             <InputForm type='email' id='email' placeholder='email' value={emailValue} updateFunction={setEmailValue} />
             <InputForm type='password' id='password' placeholder='password' value={passwordValue} updateFunction={setPasswordValue} />
             <InputForm type='password' id='confirmPassword' placeholder='confirm password' value={confirmPasswordValue} updateFunction={setConfirmPasswordValue} />
-            {error ? <p>{error}</p> : ''}
+            <p>{error ? error : ''}</p>
             <Button name='Register'/>
         </FormContainer>
     )
