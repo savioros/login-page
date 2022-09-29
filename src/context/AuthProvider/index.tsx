@@ -27,6 +27,9 @@ export function AuthProvider({ children }: IAuthProvider) {
             navigate('/home')
         }else{
             setErrorLogin('Incorrect email or password')
+            setTimeout(() => {
+                setErrorLogin('')
+            }, 4000)
         }
     }
 
