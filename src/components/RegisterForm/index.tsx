@@ -14,10 +14,13 @@ function RegisterForm() {
 
     async function handleRegister(email: string, password: string, confirmPassword: string){
         try {
-            if(email && password === confirmPassword) 
+            let validatePassword = password.length > 0 && !password.startsWith(' ')
+            let validateConfirmPassword = confirmPassword.length > 0 && !confirmPassword.startsWith(' ')
+            
+            if(email && validatePassword && validateConfirmPassword ) 
                 auth.register(email, password)
             else
-            setError('Passwords are not the same')
+                setError('Passwords are not the same')
         } catch (error) {
             console.log(error)
         }
