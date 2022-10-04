@@ -57,7 +57,7 @@ export const Content = styled.div`
     }
 `
 
-export const ButtonTheme = styled.button`
+/* export const ButtonTheme = styled.button`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,4 +68,4 @@ export const ButtonTheme = styled.button`
     bottom: 0;
     margin: 0 0 15px 15px;
     background-color: #224957;
-`
+` */
